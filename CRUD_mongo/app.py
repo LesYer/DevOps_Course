@@ -4,18 +4,47 @@ from database.models import Animal
 
 app = Flask(__name__)
 
-# movies = [
-#     {
-#         "name": "The Shawshank Redemption",
-#         "casts": ["Tim Robbins", "Morgan Freeman", "Bob Gunton", "William Sadler"],
-#         "genres": ["Drama"]
-#     },
-#     {
-#        "name": "The Godfather ",
-#        "casts": ["Marlon Brando", "Al Pacino", "James Caan", "Diane Keaton"],
-#        "genres": ["Crime", "Drama"]
-#     }
-# ]
+@app.route('/')
+def index():
+    return "Working! Its a magic)"
+
+animals = [
+     {
+         "animal": ["Dog"],
+         "age": ["10"],
+         "gender": ["male"],
+         "mass": ["10"],
+         "color": ["white"]
+     },
+     {
+         "animal": ["Cat"],
+         "age": ["4"],
+         "gender": ["male"],
+         "mass": ["3"],
+         "color": ["black"]
+     },
+     {
+         "animal": ["Pig"],
+         "age": ["2"],
+         "gender": ["female"],
+         "mass": ["100"],
+         "color": ["pink"]
+     },
+     {
+         "animal": ["Hamster"],
+         "age": ["4 weeks"],
+         "gender": ["male"],
+         "mass": ["100 g"],
+         "color": ["white"]
+     },
+     {
+         "animal": ["Snake"],
+         "age": ["1 year"],
+         "gender": ["female"],
+         "mass": ["2 kg"],
+         "color": ["yellow"]
+     },
+ ]
 
 
 app.config['MONGODB_SETTINGS'] = {
@@ -25,7 +54,7 @@ initialize_db(app)
 
 
 @app.route('/animals')
-def get_animal():
+def get_animals():
     animals = Animal.objects().to_json()
     return Response(animals, mimetype="application/json", status=200)
 
