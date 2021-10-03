@@ -1,7 +1,7 @@
 from flask import Flask, request, Response
 from database.db import initialize_db
 from database.models import Animal
-
+#from api_constants import mongo_pass
 app = Flask(__name__)
 
 @app.route('/')
@@ -43,13 +43,14 @@ animals = [
          "gender": ["female"],
          "mass": ["2 kg"],
          "color": ["yellow"]
-     },
+     }
  ]
 
+database_name = "animals"
+mongo_pass = "Imhvns.100" #test password
+DB_URI = "mongodb+srv://database_learning:{}@cluster0.bpmpc.mongodb.net/{}?retryWrites=true&w=majority".format(mongo_pass, database_name)
 
-app.config['MONGODB_SETTINGS'] = {
-    'host' : 'mongodb://localhost/animal-bag'
-}
+app.config['MONGODB_HOST'] = DB_URI
 initialize_db(app)
 
 
@@ -57,7 +58,7 @@ initialize_db(app)
 def get_animals():
     animals = Animal.objects().to_json()
     return Response(animals, mimetype="application/json", status=200)
-
+#   return {"Dog": "Pesdog"}
 
 @app.route('/animals', methods=['POST'])
 def add_animal():
