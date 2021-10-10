@@ -1,0 +1,35 @@
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body style="padding:1em">
+    <h1>--------------------ZOO----------------------</h1>
+    <div style="padding: 1em; background: #EEE; border:1px dashed #999; margin: .5em 0">
+            <a href="/animals/create">Create New</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Animal</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Color</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if members %}
+            {% for member in members %}
+            <tr>
+                <td>{{member.animal}}</td>
+                <td>{{member.age}}</td>
+                <td>{{member.gender}}</td>
+                <td>{{member.color}}</td>
+                <td><a href="/animals/edit/{{member._id}}">Edit</a> | <a href="/animals/delete/{{member._id}}">Delete</a></td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>
