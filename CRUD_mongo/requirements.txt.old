@@ -1,5 +1,0 @@
-Flask_PyMongo
-bcrypt
-werkzeug==0.16.1
-flask_mongoengine
-
