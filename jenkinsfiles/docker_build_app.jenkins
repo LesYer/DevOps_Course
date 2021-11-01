@@ -12,6 +12,11 @@ pipeline {
         timestamps()
     }
     stages {
+	stage("install git and other tools"){
+	    steps {
+		sh 'ssh 34.67.19.140 \'sudo apt install git apt-transport-https ca-certificates curl gnupg2 software-properties-common -y\''	
+	    }
+	}
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
