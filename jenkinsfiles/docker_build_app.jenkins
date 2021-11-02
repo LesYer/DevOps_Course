@@ -14,14 +14,14 @@ pipeline {
     stages {
 	stage("install git and other tools"){
 	    steps {
-		sh 'ssh 34.67.19.140 \'sudo apt install git apt-transport-https ca-certificates curl gnupg2 software-properties-common -y && curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" && sudo apt install docker-ce docker-ce-cli containerd.io && apt-cache policy docker-ce && sudo systemctl status docker && sudo chmod 666 /var/run/docker.sock\''
+		
 	    }
 	}
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
                 dir ('CRUD_mongo') {
-                	sh 'docker build -t crud_mongo:latest . '
+                    sh 'ssh 34.67.19.140 \'docker build -t crud_mongo:latest . \''
                 }
             }
         }
