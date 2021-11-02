@@ -20,7 +20,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                dir ('app') {
+                dir ('CRUD_mongo') {
                 	sh 'docker build . '
                 }
             }
