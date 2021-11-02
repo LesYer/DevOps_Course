@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('CRUD_mongo') {
-                    sh 'ssh 34.67.19.140 \'docker build -t crud_mongo:latest . \''
+                    sh 'docker build -t crud_mongo:latest . '
                 }
             }
         }
