@@ -15,7 +15,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo " ============== start building image =================="
+                dir ('CRUD_mongo') {
+                    sh 'docker build -t crud_mongo:latest . '
+                }
             }
         }
         stage('Test') {
