@@ -13,6 +13,11 @@ pipeline {
     }
     stages {
         stage("create docker image") {
+	    steps {
+		sh 'ssh 34.67.19.140 \'sudo apt git install -y\''
+		sh 'ssh 34.67.19.140 \'git clone https://github.com/LesYer/DevOps_Course.git\''
+		sh 'ssh 34.67.19.140 \'sh DevOps_Course/bash/docker_install.sh\''
+		}
             steps {
                 echo " ============== start building image =================="
                 dir ('CRUD_mongo') {
