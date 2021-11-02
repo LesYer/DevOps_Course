@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('CRUD_mongo') {
-                	sh 'docker build . '
+                	sh 'docker build -t crud_mongo:latest . '
                 }
             }
         }
