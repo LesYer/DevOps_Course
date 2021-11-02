@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'ssh 35.184.40.252 \'pwd\''
             }
         }
     }
