@@ -19,10 +19,9 @@ pipeline {
 	}
         stage("create docker image") {
             steps {
-		sh 'ssh 34.67.19.140'
                 echo " ============== start building image =================="
                 dir ('CRUD_mongo') {
-                	sh 'docker build . '
+                	sh 'ssh 34.67.19.140 \'docker build . \''
                 }
             }
         }
