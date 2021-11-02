@@ -12,11 +12,6 @@ pipeline {
         timestamps()
     }
     stages {
-	stage("install git and other tools"){
-	    steps {
-		
-	    }
-	}
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
