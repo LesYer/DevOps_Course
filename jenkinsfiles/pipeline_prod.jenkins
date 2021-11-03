@@ -32,7 +32,7 @@ pipeline {
 		sh 'scp -r /var/lib/jenkins/workspace/pipeline_PROD/CRUD_mongo/* 35.184.40.252:/home/jenkins/'
 		sh 'ssh 35.184.40.252 \'ls\''
 		sh 'ssh 35.184.40.252 \'chmod +x docker_install.sh && ./docker_install.sh\''
-		sh 'ssh 35.184.40.252 \'docker-compose up\''
+		sh 'ssh 35.184.40.252 \'python3 -m venv venv && source venv/bin/activate && docker-compose up\''
             }
         }
     }
