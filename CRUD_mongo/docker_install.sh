@@ -9,4 +9,4 @@ apt-cache policy docker-ce
 sudo systemctl status docker
 sudo chmod 666 /var/run/docker.sock
 sudo apt install docker-compose -y
-docker-compose build
+sudo docker-compose build
