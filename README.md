@@ -47,3 +47,5 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 chmod +x docker_install.sh
 ./docker_install.sh
 docker-compose up
+
+========
