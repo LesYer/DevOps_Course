@@ -1,11 +1,11 @@
 #!groovy
-
 properties([disableConcurrentBuilds()])
 
 pipeline {
     agent { 
         label 'master'
         }
+    triggers { pollSCM('* * * * *') }
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
@@ -28,10 +28,11 @@ pipeline {
         stage('Deploy') {
             steps {
 		sh 'whoami && pwd'
-		sh 'scp -r /var/lib/jenkins/workspace/pipeline_PROD/CRUD_mongo/* 35.184.40.252:/home/jenkins/'
-		sh 'ssh 35.184.40.252 \'ls\''
-		sh 'ssh 35.184.40.252 \'chmod +x docker_install.sh && ./docker_install.sh\''
+		sh 'scp -r /var/lib/jenkins/workspace/pipeline_PROD/CRUD_mongo/* 34.67.19.140:/home/jenkins/'
+		sh 'ssh 34.67.19.140 \'ls\''
+		sh 'ssh 34.67.19.140 \'chmod +x docker_install.sh && ./docker_install.sh\''
             }
         }
     }
 }
+
