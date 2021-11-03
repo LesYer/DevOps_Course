@@ -18,8 +18,6 @@ pipeline {
                 echo " ============== start building image =================="
                 dir ('CRUD_mongo') {
                     sh 'docker build -t crud_mongo:latest . '
-		sh 'sudo apt docker-compose install -y'
-		sh 'docker-compose build'
                 }
             }
         }
@@ -33,7 +31,7 @@ pipeline {
 		sh 'whoami && pwd'
 		sh 'scp -r /var/lib/jenkins/workspace/pipeline_PROD/CRUD_mongo/* 35.184.40.252:/home/jenkins/'
 		sh 'ssh 35.184.40.252 \'ls\''
-		sh 'ssh 35.184.40.252 \'docker-compose up\''
+		sh 'ssh 35.184.40.252 \'sudo apt docker-compose install -y && docker-compose build && docker-compose up\''
             }
         }
     }
