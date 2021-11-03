@@ -18,6 +18,10 @@ pipeline {
                 echo " ============== start building image =================="
                 dir ('CRUD_mongo') {
                     sh 'docker build -t crud_mongo:latest . '
+		sh 'python -m venv venv'
+		sh 'source venv/bin/activate'
+		sh 'sudo apt install docker-compose -y'
+		sh 'docker-compose build'
                 }
             }
         }
@@ -31,6 +35,7 @@ pipeline {
 		sh 'whoami && pwd'
 		sh 'scp -r /var/lib/jenkins/workspace/pipeline_PROD/CRUD_mongo/* 35.184.40.252:/home/jenkins/'
 		sh 'ssh 35.184.40.252 \'ls\''
+		sh 'ssh 35.184.40.252 \'source venv/bin/activate && docker-compose up\''
             }
         }
     }
