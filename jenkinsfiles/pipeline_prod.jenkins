@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
 		sh 'whoami && pwd'
-		sh 'scp /var/lib/jenkins/workspace/pipeline_PROD/CRUD_mongo/* 35.184.40.252:/home/jenkins/'
+		sh 'scp -r /var/lib/jenkins/workspace/pipeline_PROD/CRUD_mongo/* 35.184.40.252:/home/jenkins/'
 		sh 'ssh 35.184.40.252 \'ls\''
             }
         }
